@@ -1,7 +1,7 @@
-
+import Sidebar from "./components/Sidebar"
 const App = () => {
   return (
-    <div className="font-bold text-6xl">App</div>
+    <Sidebar />
   )
 }
 
