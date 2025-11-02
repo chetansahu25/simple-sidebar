@@ -49,7 +49,7 @@ const Sidebar: React.FC = () => {
   return (
     <aside className="h-screen">
       <nav className=" h-full flex flex-col w-60 border-r border-gray-300 shadow-md shadow-gray-400 ">
-        <div id="logo" className='flex flex-row gap-2 border-b border-gray-200 px-4 py-2 items-center'>
+        <div id="logo" className='flex flex-row gap-2 px-4 py-2 items-center'>
           <img src="/Megainventory.svg" alt="Mega Inventory Logo" />
           <span> Mega Inventory</span>
         </div>
@@ -77,7 +77,7 @@ const Sidebar: React.FC = () => {
           }
         </div>
 
-        <div id="profile" className='flex flex-row relative bottom-0 left-0 items-center gap-2 border-t py-2'>
+        <div id="profile" className='flex flex-row relative bottom-0 left-0 items-center gap-2 py-2'>
           <div className='w-8 ml-2'>
             <img src="https://ui-avatars.com/api/?name=Chetan+Sahu&rounded=true&background=random&bold=true&border=true" alt="" />
           </div>
