@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 
 
 
@@ -14,7 +14,7 @@ interface MenuSection {
 }
 const menuSections: MenuSection[] = [
   {
-    title: "Main Menu",
+    title: "Main menu",
     item: [
       { icon: "/home.svg", label: "Dashboard" },
       { icon: "/Cart.svg", label: "Order Management" },
@@ -46,25 +46,37 @@ const menuSections: MenuSection[] = [
 ]
 
 const Sidebar: React.FC = () => {
+  const [activeIndex, setActiveIndex] = useState <string>("");
+
+  const handleAcitveIndex = (item : string) =>{
+    setActiveIndex(item)
+  }
   return (
     <aside className="h-screen">
-      <nav className=" h-full flex flex-col w-60 border-r border-gray-300 shadow-md shadow-gray-400 ">
-        <div id="logo" className='flex flex-row gap-2 px-4 py-2 items-center'>
+      <nav className=" h-full flex flex-col w-60">
+        <div id="logo" className='flex flex-row gap-2 px-4 pt-6 items-center'>
           <img src="/Megainventory.svg" alt="Mega Inventory Logo" />
-          <span> Mega Inventory</span>
+          <span className="lato-regular text-gray-400 text-[15px]"> Mega Inventory</span>
         </div>
         <div className="overflow-y-scroll scrollbar-hide">
           {
             menuSections.map((section, index) => {
               return (
-                <div key={index} className="my-5 mx-3 lato-regular">
-                  <span className="lato-regular text-sm text-[#6A717F]">{section.title}</span>
+                <div key={index} className="lato-regular">
+                  <p className="my-5 mx-4 lato-regular text-[15px] mb-3 text-[#6A717F]">{section.title}</p>
                   {
                     section.item.map((item, index) => {
                       return (
-                        <div key={index} className="flex flex-row px-3 py-2 gap-2 text-gray-500 rounded-sm hover:cursor-pointer hover:bg-gray-300 hover:text-black">
-                          <img src={item.icon} className="text-[#6A717F]" key={index} />
-                          <span className="text-xs "> {item.label}</span>
+                        <div 
+                        key={index} 
+                        onClick={()=>handleAcitveIndex(item.label)}
+                        className="flex flex-row text-gray-500  hover:cursor-pointer hover:text-black">
+                          <div className={`relative rounded-tr-xl rounded-br-xl left-0 w-1 h-8 ${activeIndex === item.label ? " bg-black " : "bg-white"}`}> </div>
+                          <div className="flex flex-row mx-2 my-1 px-4 py-2 gap-2">
+
+                          <img src={item.icon} className="text-[#6A717F] text-[16px]" />
+                          <span className={` text-xs ${activeIndex==item.label ? "text-black": ""}`}> {item.label}</span>
+                          </div>
                         </div>
                       )
                     })
