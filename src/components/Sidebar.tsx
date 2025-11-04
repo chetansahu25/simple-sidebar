@@ -46,41 +46,54 @@ const menuSections: MenuSection[] = [
 ]
 
 const Sidebar: React.FC = () => {
-  const [activeIndex, setActiveIndex] = useState <string>("");
+  const [activeIndex, setActiveIndex] = useState<string>("");
+  const [notification, setNotification] = useState<string[]>(["Categories", "Order Management"])
 
-  const handleAcitveIndex = (item : string) =>{
-    setActiveIndex(item)
+  const handleAcitveIndex = (element: string) => {
+    setActiveIndex(element)
+    setNotification((prev) => (
+      prev.filter( item => item !== element)
+      
+    )
+  )
   }
   return (
-    <aside className="h-screen">
-      <nav className=" h-full flex flex-col w-60">
+    <aside className="h-screen w-[294px] shadow-lg bg-white">
+      <nav className=" h-full flex flex-col ">
         <div id="logo" className='flex flex-row gap-2 px-4 pt-6 items-center'>
           <img src="/Megainventory.svg" alt="Mega Inventory Logo" />
-          <span className="lato-regular text-gray-400 text-[15px]"> Mega Inventory</span>
+          <span className="lato-regular text-[#6A717F] text-[15px]"> Mega Inventory</span>
         </div>
         <div className="overflow-y-scroll scrollbar-hide">
           {
             menuSections.map((section, index) => {
               return (
                 <div key={index} className="lato-regular">
-                  <p className="my-5 mx-4 lato-regular text-[15px] mb-3 text-[#6A717F]">{section.title}</p>
-                  {
-                    section.item.map((item, index) => {
-                      return (
-                        <div 
-                        key={index} 
-                        onClick={()=>handleAcitveIndex(item.label)}
-                        className="flex flex-row text-gray-500  hover:cursor-pointer hover:text-black">
-                          <div className={`relative rounded-tr-xl rounded-br-xl left-0 w-1 h-8 ${activeIndex === item.label ? " bg-black " : "bg-white"}`}> </div>
-                          <div className="flex flex-row mx-2 my-1 px-4 py-2 gap-2">
+                  <p className="px-5 lato-regular text-[15px] pb-[15px] mt-[27.63px] text-[#6A717F]">{section.title}</p>
+                  <div className="flex flex-col px-3.5 gap-2 justify-center text-center">
+                    {
 
-                          <img src={item.icon} className="text-[#6A717F] text-[16px]" />
-                          <span className={` text-xs ${activeIndex==item.label ? "text-black": ""}`}> {item.label}</span>
+                      section.item.map((item, index) => {
+                        return (
+                          <div
+                            key={index}
+                            onClick={() => handleAcitveIndex(item.label)}
+                            className="flex  text-gray-500  hover:cursor-pointer hover:text-black items-center">
+                              
+                            <div className={`relative rounded-tr-xl rounded-br-xl right-3.5 w-1 h-[47px] ${activeIndex === item.label ? " bg-[#121212] " : "bg-white"}`}> </div>
+
+                            <div className="flex flex-row gap-2 px-4 py-[9px] items-center  text-center">
+                              <img src={item.icon} className="text-[#6A717F] text-[16px]" />
+                              <p className={` w-full text-[16px] ${activeIndex == item.label ? "text-[#121212] lato-bold" : ""}`}> {item.label}</p>
+                            </div>
+
+                            <div className={`w-2 h-2 bg-[#4EA674] rounded-full ${notification.includes(item.label)? "" : "hidden"}`}></div>
+
                           </div>
-                        </div>
-                      )
-                    })
-                  }
+                        )
+                      })
+                    }
+                  </div>
                 </div>
 
 
@@ -89,15 +102,15 @@ const Sidebar: React.FC = () => {
           }
         </div>
 
-        <div id="profile" className='flex flex-row relative bottom-0 left-0 items-center gap-2 py-2'>
-          <div className='w-8 ml-2'>
+        <div id="profile" className='flex gap-3 relative bottom-[26px] left-5 items-center pt-10 '>
+          <div className='w-10'>
             <img src="https://ui-avatars.com/api/?name=Chetan+Sahu&rounded=true&background=random&bold=true&border=true" alt="" />
           </div>
-          <div className='flex flex-col text-sm leading-2'>
-            <span className='font-bold text-xs'>Chetan Sahu</span>
-            <span className='text-xs'>chetansahuwork@gmail.com</span>
+          <div className='flex flex-col text-[14px] gap-1'>
+            <span className='font-bold text-[#1F2937]'>Arjun Rathore</span>
+            <span className=' text-[#737373]'>Arjun@pakaoo.com</span>
           </div>
-          <img src="/logout.svg" className="ml-2 hover:" />
+          <img src="/logout.svg" className="ml-4" />
         </div>
       </nav>
     </aside>
