@@ -102,15 +102,15 @@ const Sidebar: React.FC = () => {
           }
         </div>
 
-        <div id="profile" className='flex gap-3 relative bottom-[26px] left-5 items-center pt-10 '>
+        <div id="profile" className='flex gap-3 relative bottom-[26px] left-5 items-center pt-10 cursor-pointer '>
           <div className='w-10'>
-            <img src="https://ui-avatars.com/api/?name=Chetan+Sahu&rounded=true&background=random&bold=true&border=true" alt="" />
+            <img src="https://ui-avatars.com/api/?name=Arjun+Rathore&rounded=true&background=random&bold=true&border=true" alt="" />
           </div>
-          <div className='flex flex-col text-[14px] gap-1'>
-            <span className='font-bold text-[#1F2937]'>Arjun Rathore</span>
-            <span className=' text-[#737373]'>Arjun@pakaoo.com</span>
+          <div className='flex flex-col text-[14px] gap-1 leading-4'>
+            <span className='lato-semibold text-[#1F2937]'>Arjun Rathore</span>
+            <span className='inter-regular text-[#737373]'>Arjun@pakaoo.com</span>
           </div>
-          <img src="/logout.svg" className="ml-4" />
+          <img src="/logout.svg" className="pl-1" />
         </div>
       </nav>
     </aside>
